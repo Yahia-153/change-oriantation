@@ -10,7 +10,7 @@
         // Check if the browser supports the Screen Orientation API
 if (screen.orientation) {
   // Lock the screen orientation to landscape
-  screen.orientation.lock("landscape")
+  screen.orientation("landscape")
     .then(() => {
       document.write("Screen orientation changed to landscape.");
     })
