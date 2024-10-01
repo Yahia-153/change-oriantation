@@ -9,12 +9,14 @@
 
     <script>
         function toggleFullscreen() {
-
+        if (!document.fullscreenElement) {
             openFullscreen();
             rotatel()
-
+        } else {
+            closeFullscreen();
+            rotateP()
         }
-
+        }
 
         function openFullscreen() {
         var elem = document.documentElement;
@@ -45,13 +47,13 @@
     // Lock the screen orientation to landscape
     screen.orientation.lock("portrait")
         .then(() => {
-        document.write("Screen orientation changed to portrait.");
+        console.log("Screen orientation changed to portrait.");
         })
         .catch((error) => {
-        document.write("Failed to change orientation:", error);
+        console.log("Failed to change orientation:", error);
         });
     } else {
-    document.write("Screen Orientation API not supported.");
+    console.log("Screen Orientation API not supported.");
     }
     }
         function rotatel(){
@@ -59,16 +61,15 @@
     // Lock the screen orientation to landscape
     screen.orientation.lock("landscape")
         .then(() => {
-        document.write("Screen orientation changed to landscape.");
+        console.log("Screen orientation changed to landscape.");
         })
         .catch((error) => {
-        document.write("Failed to change orientation:", error);
+        console.log("Failed to change orientation:", error);
         });
     } else {
-    document.write("Screen Orientation API not supported.");
+    console.log("Screen Orientation API not supported.");
     }
     }
     </script>
     </body>
     </html>
-
