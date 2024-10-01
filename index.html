@@ -6,11 +6,20 @@
     <title>change oriantation</title>
 </head>
 <body>
-    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, quasi sapiente quas maxime labore explicabo.</h1>
     <script>
-        if(screen.orientation){
-            screen.orientation.lock("landscape");
-        }
+        // Check if the browser supports the Screen Orientation API
+if (screen.orientation) {
+  // Lock the screen orientation to landscape
+  screen.orientation.lock("landscape")
+    .then(() => {
+      document.write("Screen orientation changed to landscape.");
+    })
+    .catch((error) => {
+      document.write("Failed to change orientation:", error);
+    });
+} else {
+  document.write("Screen Orientation API not supported.");
+}
         
     </script>
 </body>
