@@ -1,19 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>change oriantation</title>
+  <title>Fullscreen Example</title>
 </head>
 <body>
-    <h1>landscape</h1>
-    <button onclick='rotate()'>rotate</button>
-    <script>
-        // Check if the browser supports the Screen Orientation API
-function rotate(){
+  <h1>Click the button to toggle fullscreen mode</h1>
+  <button onclick="toggleFullscreen()">Toggle Fullscreen</button>
+
+  <script>
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        openFullscreen();
+        rotatel()
+      } else {
+        closeFullscreen();
+        rotateP()
+      }
+    }
+
+    function openFullscreen() {
+      var elem = document.documentElement;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.mozRequestFullScreen) { // Firefox
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { // IE/Edge
+        elem.msRequestFullscreen();
+      }
+    }
+
+    function closeFullscreen() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) { // Firefox
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { // IE/Edge
+        document.msExitFullscreen();
+      }
+    }
+    function rotateP(){
     if (screen.orientation) {
   // Lock the screen orientation to landscape
   screen.orientation.lock("portrait")
+    .then(() => {
+      document.write("Screen orientation changed to portrait.");
+    })
+    .catch((error) => {
+      document.write("Failed to change orientation:", error);
+    });
+} else {
+  document.write("Screen Orientation API not supported.");
+}
+}
+    function rotatel(){
+    if (screen.orientation) {
+  // Lock the screen orientation to landscape
+  screen.orientation.lock("landscape")
     .then(() => {
       document.write("Screen orientation changed to landscape.");
     })
@@ -24,7 +70,6 @@ function rotate(){
   document.write("Screen Orientation API not supported.");
 }
 }
-        
-    </script>
+  </script>
 </body>
 </html>
