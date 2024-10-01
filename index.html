@@ -7,11 +7,13 @@
 </head>
 <body>
     <h1>landscape</h1>
+    <button onclick='rotate()'>rotate</button>
     <script>
         // Check if the browser supports the Screen Orientation API
-if (screen.orientation) {
+function rotate(){
+    if (screen.orientation) {
   // Lock the screen orientation to landscape
-  screen.orientation("landscape")
+  screen.orientation.lock("portrait")
     .then(() => {
       document.write("Screen orientation changed to landscape.");
     })
@@ -20,6 +22,7 @@ if (screen.orientation) {
     });
 } else {
   document.write("Screen Orientation API not supported.");
+}
 }
         
     </script>
