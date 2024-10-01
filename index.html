@@ -1,75 +1,74 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Fullscreen Example</title>
-</head>
-<body>
-  <h1>Click the button to toggle fullscreen mode</h1>
-  <button onclick="toggleFullscreen()">Toggle Fullscreen</button>
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Fullscreen Example</title>
+    </head>
+    <body>
+    <h1>Click the button to toggle fullscreen mode</h1>
+    <button onclick="toggleFullscreen()">Toggle Fullscreen</button>
 
-  <script>
-    function toggleFullscreen() {
-      if (!document.fullscreenElement) {
-        openFullscreen();
-        rotatel()
-      } else {
-        closeFullscreen();
-        rotateP()
-      }
-    }
+    <script>
+        function toggleFullscreen() {
 
-    function openFullscreen() {
-      var elem = document.documentElement;
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.mozRequestFullScreen) { // Firefox
-        elem.mozRequestFullScreen();
-      } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
-        elem.webkitRequestFullscreen();
-      } else if (elem.msRequestFullscreen) { // IE/Edge
-        elem.msRequestFullscreen();
-      }
-    }
+            openFullscreen();
+            rotatel()
 
-    function closeFullscreen() {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.mozCancelFullScreen) { // Firefox
-        document.mozCancelFullScreen();
-      } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) { // IE/Edge
-        document.msExitFullscreen();
-      }
+        }
+
+
+        function openFullscreen() {
+        var elem = document.documentElement;
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { // Firefox
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { // IE/Edge
+            elem.msRequestFullscreen();
+        }
+        }
+
+        function closeFullscreen() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { // Firefox
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { // IE/Edge
+            document.msExitFullscreen();
+        }
+        }
+        function rotateP(){
+        if (screen.orientation) {
+    // Lock the screen orientation to landscape
+    screen.orientation.lock("portrait")
+        .then(() => {
+        document.write("Screen orientation changed to portrait.");
+        })
+        .catch((error) => {
+        document.write("Failed to change orientation:", error);
+        });
+    } else {
+    document.write("Screen Orientation API not supported.");
     }
-    function rotateP(){
-    if (screen.orientation) {
-  // Lock the screen orientation to landscape
-  screen.orientation.lock("portrait")
-    .then(() => {
-      document.write("Screen orientation changed to portrait.");
-    })
-    .catch((error) => {
-      document.write("Failed to change orientation:", error);
-    });
-} else {
-  document.write("Screen Orientation API not supported.");
-}
-}
-    function rotatel(){
-    if (screen.orientation) {
-  // Lock the screen orientation to landscape
-  screen.orientation.lock("landscape")
-    .then(() => {
-      document.write("Screen orientation changed to landscape.");
-    })
-    .catch((error) => {
-      document.write("Failed to change orientation:", error);
-    });
-} else {
-  document.write("Screen Orientation API not supported.");
-}
-}
-  </script>
-</body>
-</html>
+    }
+        function rotatel(){
+        if (screen.orientation) {
+    // Lock the screen orientation to landscape
+    screen.orientation.lock("landscape")
+        .then(() => {
+        document.write("Screen orientation changed to landscape.");
+        })
+        .catch((error) => {
+        document.write("Failed to change orientation:", error);
+        });
+    } else {
+    document.write("Screen Orientation API not supported.");
+    }
+    }
+    </script>
+    </body>
+    </html>
+
